@@ -1,0 +1,98 @@
+﻿@model Expense_Tracker.Models.ViewModel.SignUpModel
+
+@{
+    ViewData["PageTitle"] = "SignUp";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+    ViewData["isDashBoard"] = false;
+}
+
+<h4>SignUp</h4>
+<hr/>
+
+<div class="container">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#212b36">
+            @if (ViewBag.ErrorMessages != null)
+            {
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach (var errorMessage in ViewBag.ErrorMessages)
+                        {
+                            <li>@errorMessage</li>
+                        }
+                    </ul>
+                </div>
+            }
+            <form asp-controller="Account" asp-action="SignUp" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div>
+
+                @*UserName*@    
+                <div class="mb-3">
+                    <ejs-textbox id="userName" placeholder="Enter UserName" ejs-for="userName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="userName" class="text-danger fs-6"></span>
+                </div>
+                @*Email*@
+                <div class="mb-3">
+                        <ejs-textbox id="email" placeholder="Enter Email" ejs-for="Email" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Email"></span>
+                </div>
+                @*Mobile Number*@
+                <div class="mb-3">
+                        <ejs-textbox id="mobile" placeholder="Enter Mobile Number" ejs-for="Mobile" floatLabelType="Always"></ejs-textbox>
+                        <span asp-validation-for="Mobile"></span>
+                </div>
+                @*Gender*@
+                <div class="mb-3">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary">
+                                <input type="radio" id="radioMale" name="Gender" value="Male" checked="(@Model.Gender="Male")"> Male
+                        </label>
+                        <label class="btn btn-outline-secondary">
+                            <input type="radio" id="radioFemale" name="Gender" value="Female" checked="(@Model.Gender ="Female")"> Female
+                        </label>
+                    </div>
+                </div>
+               
+                @*Account Type*@
+                <div class="mb-3">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-outline-secondary">
+                                <input type="radio" id="radioleft" name="AccountType" value="Savings" checked="(@Model.Gender="Savings")"> Savings
+                        </label>
+                        <label class="btn btn-outline-secondary">
+                                <input type="radio" id="radiomiddle" name="AccountType" value="Current" checked="(@Model.Gender ="Current")"> Current
+                        </label>
+                    </div>
+                </div>
+                @*Address*@
+                <div class="mb-3">
+                    <ejs-textbox id="address" placeholder="Enter Address" ejs-for="Address" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Address"></span>
+                </div>
+                @*Initial Amount Deposite*@
+                <div class="mb-3">
+                    <ejs-numerictextbox id="amount" placeholder="Enter Amount" ejs-for="Amount" format="c0" floatLabelType ="Always"></ejs-numerictextbox>
+                    <span asp-validation-for="Amount"></span>
+                </div>
+                @*Password*@
+                <div class="mb-3">
+                    <ejs-textbox id="password" placeholder="Password" type="password" ejs-for="Password" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Password"></span>
+                </div>
+                @*ConfirmPassword*@
+                <div class="mb-3">
+                    <ejs-textbox id="confirmPassword" placeholder="Confirm Password" type="password"  ejs-for="ConfirmPassword" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="ConfirmPassword"></span>
+                </div>
+                <ejs-button id="submit" cssClass="e-info" content="Submit"></ejs-button>
+                </div>
+                <p><a href ="~/Account/Login">Already Have an Account??</a></p>
+            </form>
+    </div>
+</div>
+</div>
+
+
+
+

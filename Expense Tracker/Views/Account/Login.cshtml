@@ -1,0 +1,37 @@
+﻿@model Expense_Tracker.Models.ViewModel.LoginModel;
+@{
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+
+<h4>Login</h4>
+
+<hr />
+<div class="container">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#212b36">
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @*UserName*@    
+            <div class="mb-3">
+                <ejs-textbox id="email" placeholder="Enter Email" ejs-for="Email" type="email" floatLabelType="Always"></ejs-textbox>
+                <span asp-validation-for="Email" class="text-danger fs-6"></span>
+            </div>
+            @*Password*@
+            <div class="mb-3">
+                <ejs-textbox id="password" placeholder="Password" type="password" ejs-for="Password" floatLabelType="Always"></ejs-textbox>
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <ejs-button id="submit" cssClass="e-info" content="Sumit"></ejs-button>
+            </div>
+            <div>
+                <p><a href ="~/Account/SignUp">New User??</a></p>
+            </div>
+        </form>
+        </div>
+    </div>
+
+</div>
